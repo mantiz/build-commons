@@ -7,24 +7,29 @@
         <available file="${basedir}/phpunit.xml" property="-phpunit:active"/>
     </target>
 
+    <condition property="phpunit.arg.coverage.clover" else="" value="--coverage-clover ${logdir}/clover.xml">
+        <istrue value="${phpunit.coverage.clover}" />
+    </condition>
+
+    <condition property="phpunit.arg.coverage.html" else="" value="--coverage-html ${logdir}/coverage">
+        <istrue value="${phpunit.coverage.html}" />
+    </condition>
+
+    <condition property="phpunit.arg.coverage.text" else="" value="--coverage-text">
+        <istrue value="${phpunit.coverage.text}" />
+    </condition>
+
     <target name="phpunit" extensionOf="-test-unit:main~hook" depends="-phpunit:check" if="-phpunit:active">
         <exec executable="${bindir}/phpunit" failonerror="${test-unit.fail-on-violation}" dir="${basedir}">
+            <arg value="-d" />
+            <arg value="memory_limit=1024M" />
             <arg value="--configuration" />
             <arg value="${basedir}/phpunit.xml" />
             <arg value="--log-junit" />
             <arg value="${logdir}/junit.xml" />
-        </exec>
-    </target>
-
-    <target name="-phpunit:coverage" extensionOf="-test-static:main~hook" depends="-phpunit:check" if="-phpunit:active">
-        <exec executable="${bindir}/phpunit" failonerror="${test-unit.fail-on-violation}" dir="${basedir}">
-            <arg value="--configuration" />
-            <arg value="${basedir}/phpunit.xml" />
-            <arg value="--coverage-clover" />
-            <arg value="${logdir}/clover.xml" />
-            <arg value="--coverage-html" />
-            <arg value="${builddir}/coverage" />
-            <arg value="--coverage-text" />
+            <arg line="${phpunit.arg.coverage.clover}" />
+            <arg line="${phpunit.arg.coverage.html}" />
+            <arg line="${phpunit.arg.coverage.text}" />
         </exec>
     </target>
 </project>
