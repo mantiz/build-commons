@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="jshint" extensionOf="-test-static:before~hook">
+        <apply parallel="true" output="${logdir}/jshint.xml" executable="node" failonerror="${jshint.fail-on-violation}" dir="${basedir}">
+            <arg value="${jshint.bindir}/jshint" />
+            <arg value="--reporter=checkstyle" />
+            <fileset dir="${srcdir}" includes="**/*.js" excludes="${vendordir.js}/**/*.js"/>
+        </apply>
+    </target>
+</project>
