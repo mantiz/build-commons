@@ -49,7 +49,7 @@
     <extension-point name="-prepare:before~hook" />
     <extension-point name="-prepare:after~hook" />
 
-    <target name="test" depends="prepare, test-dynamic, test-static" />
+    <target name="test" depends="prepare, test-static, test-dynamic" />
 
     <target name="test-dynamic" depends="test-unit, test-feature" />
 
