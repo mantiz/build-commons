@@ -11,8 +11,8 @@
             <arg value="${test-static-pmd.files}" />
             <arg value="xml" />
             <arg value="codesize,design" />
-            <arg line="--reportfile" />
-            <arg line="${logdir}/pmd.xml" />
+            <arg value="--reportfile" />
+            <arg value="${logdir}/pmd.xml" />
         </exec>
 
         <condition property="phpmd.command-failed" else="false">
