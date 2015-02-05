@@ -27,9 +27,9 @@
             <arg value="${basedir}/phpunit.xml" />
             <arg value="--log-junit" />
             <arg value="${logdir}/junit.xml" />
-            <arg value="${phpunit.arg.coverage.clover}" />
-            <arg value="${phpunit.arg.coverage.html}" />
-            <arg value="${phpunit.arg.coverage.text}" />
+            <arg line="${phpunit.arg.coverage.clover}" />
+            <arg line="${phpunit.arg.coverage.html}" />
+            <arg line="${phpunit.arg.coverage.text}" />
         </exec>
     </target>
 </project>
