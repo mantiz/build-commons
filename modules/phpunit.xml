@@ -11,7 +11,7 @@
         <istrue value="${phpunit.coverage.clover}" />
     </condition>
 
-    <condition property="phpunit.arg.coverage.html" else="" value="--coverage-html ${logdir}/coverage">
+    <condition property="phpunit.arg.coverage.html" else="" value="--coverage-html ${builddir}/coverage">
         <istrue value="${phpunit.coverage.html}" />
     </condition>
 
