@@ -7,7 +7,6 @@
     </target>
 
     <target name="npm:clean" extensionOf="-clean:after~hook" if="${npm.clean}">
-        <echo>foo</echo>
         <delete dir="${basedir}/node_modules"/>
     </target>
 </project>
