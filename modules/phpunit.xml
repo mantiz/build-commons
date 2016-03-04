@@ -19,6 +19,14 @@
         <istrue value="${phpunit.coverage.text}" />
     </condition>
 
+    <condition property="phpunit.arg.testdox.text" else="" value="--testdox-text ${logdir}/testdox.txt">
+        <istrue value="${phpunit.testdox.text}" />
+    </condition>
+
+    <condition property="phpunit.arg.testdox.html" else="" value="--testdox-html ${logdir}/testdox.html">
+        <istrue value="${phpunit.testdox.html}" />
+    </condition>
+
     <target name="phpunit" extensionOf="-test-unit:main~hook" depends="-phpunit:check" if="-phpunit:active">
         <exec executable="${bindir}/phpunit" failonerror="${test-unit.fail-on-violation}" dir="${basedir}">
             <arg value="-d" />
@@ -30,6 +38,8 @@
             <arg line="${phpunit.arg.coverage.clover}" />
             <arg line="${phpunit.arg.coverage.html}" />
             <arg line="${phpunit.arg.coverage.text}" />
+            <arg line="${phpunit.arg.testdox.html}" />
+            <arg line="${phpunit.arg.testdox.text}" />
         </exec>
     </target>
 </project>
