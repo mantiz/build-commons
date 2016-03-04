@@ -19,6 +19,10 @@
         <istrue value="${phpunit.coverage.text}" />
     </condition>
 
+    <condition property="phpunit.arg.coverage.textfile" else="" value="--coverage-text=${logdir}/coverage.txt">
+        <equals arg1="${phpunit.coverage.text}" arg2="file" />
+    </condition>
+
     <condition property="phpunit.arg.testdox.text" else="" value="--testdox-text ${logdir}/testdox.txt">
         <istrue value="${phpunit.testdox.text}" />
     </condition>
@@ -38,6 +42,7 @@
             <arg line="${phpunit.arg.coverage.clover}" />
             <arg line="${phpunit.arg.coverage.html}" />
             <arg line="${phpunit.arg.coverage.text}" />
+            <arg line="${phpunit.arg.coverage.textfile}" />
             <arg line="${phpunit.arg.testdox.html}" />
             <arg line="${phpunit.arg.testdox.text}" />
         </exec>
