@@ -31,6 +31,10 @@
         <istrue value="${phpunit.testdox.html}" />
     </condition>
 
+    <condition property="phpunit.arg.colors" else="" value="--colors=${phpunit.colors}">
+        <isset property="phpunit.colors" />
+    </condition>
+
     <target name="phpunit" extensionOf="-test-unit:main~hook" depends="-phpunit:check" if="-phpunit:active">
         <exec executable="${bindir}/phpunit" failonerror="${test-unit.fail-on-violation}" dir="${basedir}">
             <arg value="-d" />
@@ -45,6 +49,7 @@
             <arg line="${phpunit.arg.coverage.textfile}" />
             <arg line="${phpunit.arg.testdox.html}" />
             <arg line="${phpunit.arg.testdox.text}" />
+            <arg line="${phpunit.arg.colors}" />
         </exec>
     </target>
 </project>
